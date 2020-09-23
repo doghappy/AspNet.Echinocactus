@@ -15,17 +15,15 @@ namespace DogHappy.AspNet.Echinocactus
         /// <summary>
         /// 
         /// </summary>
+        public JsonHandler() { }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="context"></param>
         public JsonHandler(HttpContext context)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-            else
-            {
-                HttpContext = context;
-            }
+            HttpContext = context;
         }
 
         /// <summary>
@@ -36,108 +34,7 @@ namespace DogHappy.AspNet.Echinocactus
         /// <summary>
         /// 
         /// </summary>
-        public HttpContext HttpContext { get; }
-
-        private IValueConverter GetConverter(Type type)
-        {
-            IValueConverter converter = null;
-            switch (type)
-            {
-                case Type _ when type == typeof(string):
-                    converter = new StringConverter();
-                    break;
-                case Type _ when type == typeof(short):
-                    converter = new Int16Converter();
-                    break;
-                case Type _ when type == typeof(int):
-                    converter = new Int32Converter();
-                    break;
-                case Type _ when type == typeof(long):
-                    converter = new Int64Converter();
-                    break;
-                case Type _ when type == typeof(char):
-                    converter = new CharConverter();
-                    break;
-                case Type _ when type == typeof(Guid):
-                    converter = new GuidConverter();
-                    break;
-                case Type _ when type == typeof(DateTime):
-                    converter = new DateTimeConverter();
-                    break;
-                case Type _ when type == typeof(DateTimeOffset):
-                    converter = new DateTimeOffsetConverter();
-                    break;
-                case Type _ when type == typeof(float):
-                    converter = new FloatConverter();
-                    break;
-                case Type _ when type == typeof(double):
-                    converter = new DoubleConverter();
-                    break;
-                case Type _ when type == typeof(decimal):
-                    converter = new DecimalConverter();
-                    break;
-            }
-            return converter;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public T ChangeType<T>(object value)
-        {
-            Type type = typeof(T);
-            if (type.IsArray)
-            {
-                Type elementType = type.GetElementType();
-                IValueConverter converter = GetConverter(elementType);
-                if (converter != null)
-                {
-                    string[] items = value.ToString().Split(',');
-                    Array array = Array.CreateInstance(elementType, items.Length);
-                    for (int i = 0; i < items.Length; i++)
-                    {
-                        var element = converter.Convert(items[i]);
-                        array.SetValue(element, i);
-                    }
-                    return (T)(object)array;
-                }
-            }
-            else if (type.IsGenericType)
-            {
-                //Type elementType = type.GenericTypeArguments[0];
-                //IValueConverter converter = GetConverter(elementType);
-                //if (converter != null)
-                //{
-                //    string[] items = value.ToString().Split(',');
-                //    var collection = Activator.CreateInstance<T>();
-                //    Type collectionType = collection.GetType();
-                //    var method = collectionType.GetMethod("Add");
-                //    if (method == null)
-                //    {
-                //        throw new TypeInitializationException(collectionType.FullName, new Exception("There is no Add method in the type definition."));
-                //    }
-                //    foreach (var item in items)
-                //    {
-                //        var element = converter.Convert(item);
-                //        method.Invoke(collection, new[] { element });
-                //    }
-                //    return (T)(object)collection;
-                //}
-                throw new ArgumentException($"Unable to get the data of the generic class, please try using: {type.GenericTypeArguments[0].FullName}[]");
-            }
-            else
-            {
-                IValueConverter converter = GetConverter(type);
-                if (converter != null)
-                {
-                    return (T)converter.Convert(value);
-                }
-            }
-            return default;
-        }
+        public HttpContext HttpContext { get; set; }
 
         /// <summary>
         /// Get data from the QueryString
@@ -148,7 +45,7 @@ namespace DogHappy.AspNet.Echinocactus
         public T GetQueryStringValue<T>(string key)
         {
             string value = HttpContext.Request.QueryString[key];
-            return ChangeType<T>(value);
+            return ValueConverter.As<T>(value);
         }
 
         /// <summary>
@@ -160,7 +57,7 @@ namespace DogHappy.AspNet.Echinocactus
         public T GetFormValue<T>(string key)
         {
             string value = HttpContext.Request.Form[key];
-            return ChangeType<T>(value);
+            return ValueConverter.As<T>(value);
         }
 
         /// <summary>

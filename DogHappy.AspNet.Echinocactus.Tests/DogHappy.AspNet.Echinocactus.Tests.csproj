@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -63,7 +64,11 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsonHandlerTests\ChangeTypeTest.cs" />
+    <Compile Include="ExtensionTests\DataTableExtensionTests\DataTableAsTest.cs" />
+    <Compile Include="ExtensionTests\DataTableExtensionTests\DataRowAsTest.cs" />
+    <Compile Include="ExtensionTests\DataTableExtensionTests\CellValueTest.cs" />
+    <Compile Include="ExtensionTests\DataTableExtensionTests\User.cs" />
+    <Compile Include="ValueConverterTest.cs" />
     <Compile Include="JsonHandlerTests\GetFormValueTest.cs" />
     <Compile Include="JsonHandlerTests\GetQueryStringValueTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
