@@ -54,7 +54,7 @@ Pagination = new Pagination(page, 10)
     LastPageText = "&gt;&gt;"
 };
 Pagination.TotalItems = GetTotalItems();
-Pagination.Append = $"Ò³Âë {pagination.Page} / {pagination.TotalPages}";
+Pagination.Append = $"é¡µç  {pagination.Page} / {pagination.TotalPages}";
 TableFooter.InnerHtml = pagination.GetPageNumberLinks(p => $"/Test.aspx?PageIndex={p}");
 ```
 
