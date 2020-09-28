@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.0.0.0-alpha.4</version>
+    <title>$title$</title>
+    <authors>DogHappy</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/doghappy/AspNet.Echinocactus</projectUrl>
+    <description>ASP.NET HttpRequest helper and DataTable helper</description>
+    <releaseNotes>Add pagination helper</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>ASP.NET DataTable</tags>
+  </metadata>
+</package>

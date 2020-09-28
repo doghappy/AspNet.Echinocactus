@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("DogHappy.AspNet.Echinocactus")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("ASP.NET HttpRequest helper and DataTable helper")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DogHappy.AspNet.Echinocactus")]
@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
 [assembly: Guid("7c67f815-6b6e-4926-8142-6c58043088eb")]
 
 // 程序集的版本信息由下列四个值组成: 
-//
+//  
 //      主版本
 //      次版本
 //      生成号

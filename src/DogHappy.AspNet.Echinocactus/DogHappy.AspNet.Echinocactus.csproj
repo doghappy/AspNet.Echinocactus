@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\DogHappy.AspNet.Echinocactus.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -51,6 +54,7 @@
     <Compile Include="Exceptions\InvalidJsonException.cs" />
     <Compile Include="Extensions\DataTableExtension.cs" />
     <Compile Include="JsonHandler.cs" />
+    <Compile Include="Pagination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueConverters\DateTimeOffsetConverter.cs" />
     <Compile Include="ValueConverters\DecimalConverter.cs" />
@@ -67,6 +71,7 @@
     <Compile Include="ValueConverters\ValueConverter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DogHappy.AspNet.Echinocactus.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
